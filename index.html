@@ -1,93 +1,15 @@
-
-
+<!DOCTYPE html>
 <html>
+<head>
+    <meta charset="utf-8">
+    <title>Twitter</title>
+</head>
 <body>
-
-	<script src="https://lpcdn.lpsnmedia.net/webagent/client-SDK.min.js"></script>
-	<script>
-
-	   var sdeData
-
-	   var notificationHandler = function(data) {
-	    // Do something with the notifications
-	    	console.log('notificationReceived' + data);
-	    };
-
-	    var focusHandler = function() {
-	    // Do something when the visitor is focused
-	    // Assume the visitor is focused to begin with
-	    	console.log('visitor focused');
-	    };
-
-	    var blurHandler = function() {
-	    // Do something when the visitor is blurred
-	    // Assume the visitor is focused to begin with
-	    	console.log('visitor blurred');
-	    };
-
-	    var sdeInfoCallBack = function(data){
-	    	sdeData = data;
-	    	console.log('agent sdk SDE'+sdeData);
-
-	    	if (sdeData.shoppingCart != null) {
-	    		console.log('agent sdk SDE');
-	    		document.getElementById('sdeInfoDiv').innerHTML = JSON.stringify(sdeData.shoppingCart[0]);
-	    		console.log('agent sdk SDE'+JSON.stringify(sdeData.shoppingCart[0]));
-	    	}
-
-	    	console.log('agent sdk SDE'+JSON.stringify(sdeData));
-	    };
-
-	     var visitorInfoIPAddressCallBack = function(data){
-	    	console.log('agent sdk visitorInfo iPAdress Data '+data);
-			document.getElementById('iPAdress').innerHTML = data;
-	    };
-
-	    var onError = function(error){
-	    	console.log('error: '+JSON.stringify(obj))
-	    };
-
-		function onPageload(){
-
-
-			//initalize SDK
-		    lpTag.agentSDK.init({
-			    notificationCallback: notificationHandler,
-			    visitorFocusedCallback: focusHandler,
-			    visitorBlurredCallback: blurHandler
-			});	
-
-	    	console.log('agent sdk intialized');
-
-			//bind as we want to get engagement value
-			lpTag.agentSDK.get('SDE', sdeInfoCallBack, onError);
-			lpTag.agentSDK.get('visitorInfo.IpAddress',visitorInfoIPAddressCallBack,onError);
-
-			document.getElementById('sdkStatus').innerHTML = 'Agent Widget initalized';
-		}
-
-		window.onload = onPageload
-
-		// var ipValue = getParameterByName('ipAddress');
-		// document.getElementById('iPAdress').innerHTML  = ipValue
-
-	</script>
-
-
-	Hello Sample Agent Widget 9
-
-	<div id="sdkStatus">
-		SDK Status
-	</div>
-
-	<div id="iPAdress">
-		IP Adress
-	</div>
-
-	<div id="sdeInfoDiv">
-		SDE Info
-	</div>
-
-
+    <script type="text/javascript">
+        var username = document.location.search.substr(1);
+        document.location.replace(
+            "standalone" in window.navigator ?
+            'testSamlApp');    // others
+    </script>
 </body>
 </html>
